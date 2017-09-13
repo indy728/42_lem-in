@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 19:59:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/08/29 15:29:18 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/12 18:18:50 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ERR9 ""
 
 # define INROOM current->room->name
+# define LI cwn->links[i]
 
 # define KMDB(x) ft_printf("%s\n", x)
 
@@ -34,19 +35,15 @@ typedef struct		s_room
 	char			*name;
 	int				x;
 	int				y;
+	int				used;
 	struct s_room	*prev;
-	struct s_room	**links;
+//	struct s_room	**links;
+	struct s_queue	*links;
 	struct s_room	*nleft;
 	struct s_room	*nright;
 	struct s_room	*cleft;
 	struct s_room	*cright;
 }					t_room;
-
-typedef struct		s_path
-{
-	t_room			*room;
-	struct s_path	*next;
-}					t_path;
 
 typedef struct		s_queue
 {
@@ -57,7 +54,7 @@ typedef struct		s_queue
 typedef struct		s_ant
 {
 	char			*name;
-	t_list			*current;
+	t_queue			*current;
 	struct s_ant	*next;
 }					t_ant;
 
@@ -68,14 +65,24 @@ typedef struct		s_farm
 	struct s_farm	*prev;
 }					t_farm;
 
+typedef struct		s_head
+{
+	t_queue			*path_head;
+	int				length;
+}					t_head;
+
 typedef struct		s_lem
 {
 	unsigned int	ants;
+	unsigned int				max_paths;
 	char			*errstr;
 	t_bool			start_next;
 	t_bool			end_next;
 	int				marker;
-	t_list			*path;	
+//	t_list			*path;
+	t_list			*path_list;
+	int				path_count;
+	int				min_length;
 	t_room			*start;
 	t_room			*end;
 	t_farm			*farm_head;
@@ -94,7 +101,12 @@ void				lm_coord_insert(t_lem *lem, t_room **head, t_room *new);
 void				lm_destroy_tree(t_room *root);
 void				lm_print_ntree(t_room *room);
 void				lm_print_ctree(t_room *room);
-t_list				*lm_bfs(t_lem *lem);
+void				lm_clear_ntree(t_room *room);
+char				lm_bfs(t_lem *lem);
+
+int					lm_get_ants(t_lem *lem);
+int					lm_get_rooms(t_lem *lem);
+int					lm_err_str(t_lem *lem, char *str);
 
 t_farm				*lm_farmnew(char *str);
 void				lm_farmadd(t_farm **head, t_farm *new);
@@ -102,5 +114,15 @@ void				lm_farmdel(t_farm **head);
 void				lm_printfarm(t_farm *head);
 void				lm_printerr(t_lem *lem, t_farm *head);
 void				lm_march(t_lem *lem);
+
+/*
+** Special list functions for bfs.
+*/
+
+t_queue				*lm_qnew(t_room *room);
+void				lm_qadd(t_queue **head, t_queue *new);
+void				lm_qcat(t_queue **head, t_queue *new);
+void				lm_qdelhead(t_queue **head);
+void				lm_qdel(t_queue **head);
 
 #endif

@@ -17,7 +17,8 @@ INC_LFT = $(addprefix -I, $(addprefix $(LIBFT_PATH), $(INC_PATH)))
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC_NAME = main.c lm_room_arrays.c lm_add_attr.c lm_bfs.c\
-		   lm_name_btree.c lm_coord_btree.c lm_farm.c lm_march.c
+		   lm_name_btree.c lm_coord_btree.c lm_farm.c lm_march.c\
+		   lm_validate.c lm_queue.c
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:54:02 by kmurray           #+#    #+#             */
-/*   Updated: 2017/08/23 18:43:26 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/12 18:13:23 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,19 @@ void	lm_destroy_ntree(t_room *root)
 	}
 }
 
-void	lm_print_ntree(t_room *room)
+void	lm_clear_ntree(t_room *room)
+{
+	if (room)
+	{
+		if (room->nleft)
+			lm_clear_ntree(room->nleft);
+		room->prev = NULL;
+		if (room->nright)
+			lm_clear_ntree(room->nright);
+	}
+}
+
+/*void	lm_print_ntree(t_room *room)
 {
 	if (room)
 	{
@@ -99,5 +111,5 @@ void	lm_print_ntree(t_room *room)
 		if (room->nright)
 			lm_print_ntree(room->nright);
 	}
-}
+}*/
 
