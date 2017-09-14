@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:18:49 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/10 17:30:23 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/13 21:57:51 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int				lm_get_ants(t_lem *lem)
 	{
 		if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
 			err += lm_err_str(lem, ERR1);
-		if (line[0] != '#')
+		else if (line[0] != '#')
 		{
 			if (!ft_isdigitstr(line) ||
 					(lem->ants = ft_atoi(line)) <= 0)
@@ -30,6 +30,8 @@ int				lm_get_ants(t_lem *lem)
 		lm_farmadd(&lem->farm_head, lm_farmnew(line));
 		ft_strdel(&line);
 	}
+	if (!err && !lem->ants)
+		err += lm_err_str(lem, ERR2);
 	return (err);
 }
 
@@ -66,6 +68,8 @@ static int		lm_get_links(t_lem *lem, char *line)
 {
 	VAR(int, err, 0);
 	++lem->marker;
+	if (lem->start_next || lem->end_next || !lem->start || !lem->end)
+		err += lm_err_str(lem, "doodoo");
 	validate_links(lem, line, &err);
 	while (!err && get_next_line(0, &line) > 0)
 		validate_links(lem, line, &err);
@@ -82,6 +86,8 @@ static void		validate_rooms(t_lem *lem, char *line, char **room, int *err)
 		room = ft_strsplit(line, ' ');
 		if (ft_size_r(room) != 3)
 			*err += lm_get_links(lem, line);
+		else if (ft_strchr(room[0], '-'))
+			*err += lm_err_str(lem, ERR7);
 		else if (ft_size_r(room) == 3 && (!ft_isdigitstr(room[1]) ||
 					!ft_isdigitstr(room[2])))
 			*err += lm_err_str(lem, ERR8);
@@ -112,5 +118,7 @@ int				lm_get_rooms(t_lem *lem)
 		if (lem->marker == 1)
 			ft_strdel(&line);
 	}
+	if (!err)
+		err += lem->marker == 2 ? 0 : lm_err_str(lem, "no links");
 	return (err);
 }

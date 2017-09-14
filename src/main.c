@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 20:09:15 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/12 16:36:23 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/13 23:06:03 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		validate_instructions(t_lem *lem)
 	VAR(int, err, 0);
 	if (!(err += lm_get_ants(lem)))
 		err += lm_get_rooms(lem);
-//	err += check_start_and_end(lem);
+	if (!err && (!lem->start->links || !lem->end->links))
+		err += lm_err_str(lem, ERR9);
 	return (err);
 }
 
@@ -41,25 +42,24 @@ void	set_max_paths(t_lem *lem)
 	lem->max_paths = ft_min(lem->max_paths, lem->ants);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	VAR(char*, line, NULL);
 	VAR(char*, error, NULL);
 	VAR(t_lem*, lem, (t_lem *)ft_memalloc(sizeof(t_lem)));
+	if (ac > 1)
+		lm_mark_options(ac, av, lem);
 	if (validate_instructions(lem))
-	{
 		lm_printerr(lem, lem->farm_head);
-		ft_printf("ERROR\n");
-		lm_farmdel(&lem->farm_head);
-		exit (0);
-	}
-	set_max_paths(lem);
-	lm_printfarm(lem->farm_head);
-	if (lm_bfs(lem))
-		lm_march(lem);
 	else
-		ft_printf("ERROR\n");
-	lm_farmdel(&lem->farm_head);
-	ft_printf(RED"max paths: %d min length: %d\n"RESET, lem->max_paths, lem->min_length);
+	{
+		set_max_paths(lem);
+		lm_printfarm(lem->farm_head);
+		if (lm_bfs(lem))
+			lm_march(lem);
+		else
+			lm_printerr(lem, lem->farm_head);
+	}
+	lm_delete(lem);
 	return (0);
 }

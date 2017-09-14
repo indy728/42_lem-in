@@ -6,36 +6,32 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:54:02 by kmurray           #+#    #+#             */
-/*   Updated: 2017/08/23 18:59:09 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/13 23:29:44 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-static t_room *get_min_nnode(t_room *head)
+static t_room	*get_min_nnode(t_room *head)
 {
-	t_room *temp;
-
-	temp = head;
+	VAR(t_room*, temp, head);
 	while (temp->nleft)
 		temp = temp->nleft;
 	return (temp);
 }
 
-t_room		 *lm_name_pop(t_room *head, t_room *del)
+t_room			*lm_name_pop(t_room *head, t_room *del)
 {
-	int		value;
-	t_room	*temp;
-
 	if (!head)
 		return (head);
-	value = ft_strcmp(head->name, del->name);
+	VAR(int, value, ft_strcmp(head->name, del->name));
 	if (value > 0)
 		head->nleft = lm_name_pop(head->nleft, del);
 	else if (value < 0)
 		head->nright = lm_name_pop(head->nright, del);
 	else
 	{
+		VAR(t_room*, temp, NULL);
 		if (!head->nleft)
 		{
 			temp = head->nright;
@@ -52,7 +48,7 @@ t_room		 *lm_name_pop(t_room *head, t_room *del)
 	return (head);
 }
 
-void		lm_coord_insert(t_lem *lem, t_room **head, t_room *new)
+void			lm_coord_insert(t_lem *lem, t_room **head, t_room *new)
 {
 	VAR(int, value, 0);
 	if (*head == NULL)
@@ -63,9 +59,11 @@ void		lm_coord_insert(t_lem *lem, t_room **head, t_room *new)
 			value = (*head)->y - new->y;
 		if (!value)
 		{
-			lm_name_pop(lem->name_head, new);
+		//	lm_name_pop(lem->name_head, new);
 			lm_name_pop(lem->name_head, *head);
 			(*head)->name = new->name;
+			(*head)->nleft = NULL;
+			(*head)->nright = NULL;
 			lm_name_insert(lem, &lem->name_head, *head);
 		}
 		else if (value > 0)
@@ -75,7 +73,7 @@ void		lm_coord_insert(t_lem *lem, t_room **head, t_room *new)
 	}
 }
 
-void	lm_destroy_tree(t_room *root)
+void			lm_destroy_tree(t_room *root)
 {
 	if (root)
 	{
@@ -86,16 +84,3 @@ void	lm_destroy_tree(t_room *root)
 		root = NULL;
 	}
 }
-
-void	lm_print_ctree(t_room *room)
-{
-	if (room)
-	{
-		if (room->cleft)
-			lm_print_ctree(room->cleft);
-		ft_printf("%s %d %d\n", room->name, room->x, room->y);
-		if (room->cright)
-			lm_print_ctree(room->cright);
-	}
-}
-

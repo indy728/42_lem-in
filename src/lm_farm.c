@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/28 23:40:28 by kmurray           #+#    #+#             */
-/*   Updated: 2017/08/29 00:19:44 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/13 21:51:02 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,12 @@ t_farm	*lm_farmnew(char *str)
 	return (new);
 }
 
-void	lm_farmdel(t_farm **head)
+void	lm_farmdel(t_lem *lem)
 {
-	if (*head)
+	VAR(t_farm*, head, lem->farm_head);
+	if (head)
 	{
-		VAR(t_farm*, del, *head);
+		VAR(t_farm*, del, head);
 		VAR(t_farm*, tmp, NULL);
 		if (del->prev)
 			del->prev->next = NULL;
@@ -56,38 +57,6 @@ void	lm_farmdel(t_farm **head)
 			ft_strdel(&tmp->inst);
 			free(tmp);
 		}
-		*head = NULL;
-	}
-}
-
-void	lm_printerr(t_lem *lem, t_farm *head)
-{
-	if (head)
-	{
-		VAR(t_farm*, print, head);
-		ft_putendl(print->inst);
-		print = print->next;
-		while (print && print != head->prev)
-		{
-			ft_putendl(print->inst);
-			print = print->next;
-		}
-		ft_printf("%s$ "RED"<- invalid: %s\n"RESET, print->inst, lem->errstr);
-	}
-}
-
-void	lm_printfarm(t_farm *head)
-{
-	if (head)
-	{
-		VAR(t_farm*, print, head);
-		ft_putendl(print->inst);
-		print = print->next;
-		while (print && print != head)
-		{
-			ft_putendl(print->inst);
-			print = print->next;
-		}
-		ft_putendl("");
+		head = NULL;
 	}
 }
