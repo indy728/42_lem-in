@@ -28,7 +28,7 @@ SRC_NAME+= ft_itoa.c ft_memdup.c ft_strcmp.c ft_strncpy.c ft_lltoa_base.c\
 		   ft_putlstr.c ft_putlnbr.c ft_putlnbr_fd.c ft_abs.c\
 		   ft_maxtoa_base.c ft_umaxtoa_base.c ft_countu_base.c ft_lstsort.c\
 		   ft_toupperstr.c ft_tolowerstr.c ft_capitalize_each.c\
-		   ft_isdigitstr.c\
+		   ft_isdigitstr.c ft_atol.c\
 		   ft_strndup.c ft_dup_r.c ft_size_r.c ft_print_r.c\
 		   ft_del_r.c ft_dupn_r.c ft_pop_r.c\
 		   ft_exit_malloc_error.c ft_exit_read_error.c\

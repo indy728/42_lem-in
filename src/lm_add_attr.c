@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 22:28:03 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:45:53 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 17:00:34 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,10 @@ int				add_link(t_lem *lem, char **link)
 {
 	VAR(t_room*, link1, find_node(lem->name_head, link[0]));
 	VAR(t_room*, link2, find_node(lem->name_head, link[1]));
-	if (!link1 || !link2 || link1 == link2)
-		return (0);
+	if (!link1 || !link2)
+		return (1 - lm_err_str(lem, ERR6));
+	if (link1 == link2)
+		return (1 - lm_err_str(lem, ERR10));
 	lm_qadd(&link1->links, lm_qnew(link2));
 	lm_qadd(&link2->links, lm_qnew(link1));
 	return (1);

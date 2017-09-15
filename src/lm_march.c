@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 01:02:05 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:13:52 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 17:50:54 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,18 @@ int		list_init(t_lem *lem, t_ant **leader)
 	VAR(int, i, 0);
 	VAR(t_list*, path, lem->path_list);
 	VAR(t_head*, head, (t_head *)(path->content));
+	VAR(int, len, lem->min_length);
 	*leader = lm_antnew(lem, ++i, head->path_head);
 	VAR(t_ant*, tmp, *leader);
 	while (path && i < lem->ants && i < lem->path_count)
 	{
 		path = path->next;
 		head = (t_head *)path->content;
+		if ((lem->ants - i) / i < (head->length - len))
+			break ;
 		tmp->next = lm_antnew(lem, ++i, head->path_head);
 		tmp = tmp->next;
+		len = head->length;
 	}
 	return (i);
 }
@@ -90,7 +94,7 @@ void	lm_march(t_lem *lem)
 		lm_onestep(lem);
 	else
 	{
-		VAR(t_ant*, leader, (t_ant *)ft_memalloc(sizeof(t_ant)));
+		VAR(t_ant*, leader, NULL);
 		ants = list_init(lem, &leader);
 		while (done < lem->ants)
 		{

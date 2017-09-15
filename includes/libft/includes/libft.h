@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/28 12:26:25 by kmurray           #+#    #+#             */
-/*   Updated: 2017/08/22 19:54:46 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 14:38:18 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # include "printf.h"
 # include "colors.h"
 # include "macros.h"
+
+# define INTMAX 2147483647
+# define INTMIN -2147483648
 
 typedef char		t_bool;
 
@@ -101,6 +104,7 @@ void				ft_print_r(char **arr);
 void				ft_del_r(char **arr);
 
 int					ft_atoi(char const *str);
+long				ft_atol(char const *str);
 char				*ft_itoa(int n);
 char				*ft_lltoa_base(long long n, int base);
 char				*ft_maxtoa_base(intmax_t n, int base);

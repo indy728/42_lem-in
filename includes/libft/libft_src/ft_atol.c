@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/08/22 19:55:40 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 14:44:56 by kmurray          ###   ########.fr       */
+/*   Created: 2016/11/28 18:23:59 by kmurray           #+#    #+#             */
+/*   Updated: 2017/09/14 14:47:10 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	main(void)
+long		ft_atol(char const *str)
 {
-	char i[12] = "2147483647";
-	char j[13] = "2147483648";
-	ft_printf("atoi i: %d atol i: %ld\n"
-			"atoi j: %d atol j: %ld\n", ft_atoi(i), ft_atol(i),
-			ft_atoi(j), ft_atol(j));
-	return (0);
+	long i;
+	long a;
+	long flag;
+
+	flag = 1;
+	a = 0;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		++i;
+	if (str[i] == '-')
+	{
+		flag = -1;
+		++i;
+	}
+	else if (str[i] == '+')
+		++i;
+	while (str[i] >= '0' && str[i] <= '9')
+		a = a * 10 + str[i++] - '0';
+	return (flag * a);
 }

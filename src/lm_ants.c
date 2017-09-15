@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 16:33:15 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 16:42:23 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 16:37:16 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,17 @@ int		lm_antcat(t_lem *lem, t_ant *leader, int ants)
 	VAR(int, i, -1);
 	VAR(t_ant*, tmp, leader);
 	VAR(t_list*, path, lem->path_list);
+	VAR(t_head*, head, NULL);
+	VAR(int, len, 0);
 	while (tmp->next)
 		tmp = tmp->next;
 	while (path && ants < lem->ants && ++i < lem->path_count)
 	{
-		tmp->next = lm_antnew(lem, ++ants,
-				((t_head *)(path->content))->path_head);
+		head = ((t_head *)(path->content));
+		if (i && ((lem->ants - ants) / i) < (head->length - len))
+			break ;
+		tmp->next = lm_antnew(lem, ++ants, head->path_head);
+		len = head->length;
 		path = path->next;
 		tmp = tmp->next;
 	}

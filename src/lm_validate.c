@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:18:49 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 21:57:51 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 19:01:06 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ int				lm_get_ants(t_lem *lem)
 			err += lm_err_str(lem, ERR1);
 		else if (line[0] != '#')
 		{
-			if (!ft_isdigitstr(line) ||
+			if (!ft_isdigitstr(line) || ft_strlen(line) > 11 ||
+					(long)(INTMIN) > ft_atol(line) ||
+					ft_atol(line) > (long)(INTMAX) ||
 					(lem->ants = ft_atoi(line)) <= 0)
 				err += lm_err_str(lem, ERR2);
 			++lem->marker;
@@ -54,7 +56,7 @@ static void		validate_links(t_lem *lem, char *line, int *err)
 			else
 			{
 				if (!add_link(lem, link))
-					*err += lm_err_str(lem, ERR6);
+					*err = 1;
 			}
 			ft_del_r(link);
 		}
@@ -68,11 +70,15 @@ static int		lm_get_links(t_lem *lem, char *line)
 {
 	VAR(int, err, 0);
 	++lem->marker;
-	if (lem->start_next || lem->end_next || !lem->start || !lem->end)
-		err += lm_err_str(lem, "doodoo");
-	validate_links(lem, line, &err);
+	if (lem->start_next || lem->end_next)
+		err += lm_err_str(lem, ERR12);
+	if (!lem->start || !lem->end)
+		err += lm_err_str(lem, ERR14);
+	if (!err)
+		validate_links(lem, line, &err);
 	while (!err && get_next_line(0, &line) > 0)
 		validate_links(lem, line, &err);
+//	ft_strdel(&line);
 	return (err);
 }
 
@@ -91,6 +97,12 @@ static void		validate_rooms(t_lem *lem, char *line, char **room, int *err)
 		else if (ft_size_r(room) == 3 && (!ft_isdigitstr(room[1]) ||
 					!ft_isdigitstr(room[2])))
 			*err += lm_err_str(lem, ERR8);
+		else if (ft_strlen(room[1]) > 11 || ft_strlen(room[2]) > 11 ||
+				(long)INTMIN > ft_atol(room[1]) ||
+				ft_atol(room[1]) > (long)INTMAX ||
+				(long)INTMIN > ft_atol(room[2]) ||
+				ft_atol(room[2]) > (long)INTMAX)
+			*err += lm_err_str(lem, ERR11);
 		else
 			add_room(lem, room);
 		ft_del_r(room);
@@ -118,7 +130,7 @@ int				lm_get_rooms(t_lem *lem)
 		if (lem->marker == 1)
 			ft_strdel(&line);
 	}
-	if (!err)
-		err += lem->marker == 2 ? 0 : lm_err_str(lem, "no links");
+//	if (!err)
+//		err += lem->marker == 2 ? 0 : lm_err_str(lem, ERR13);
 	return (err);
 }

@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 20:09:15 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:06:03 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 19:50:52 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int		validate_instructions(t_lem *lem)
 	VAR(int, err, 0);
 	if (!(err += lm_get_ants(lem)))
 		err += lm_get_rooms(lem);
+	if (!err)
+		++lem->marker;
 	if (!err && (!lem->start->links || !lem->end->links))
 		err += lm_err_str(lem, ERR9);
 	return (err);

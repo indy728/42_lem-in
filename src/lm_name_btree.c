@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:54:02 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:27:24 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 17:09:30 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ void			lm_name_insert(t_lem *lem, t_room **head, t_room *new)
 	}
 }
 
-void			lm_destroy_ntree(t_room *root)
+void			lm_destroy_tree(t_room *root)
 {
 	if (root)
 	{
 		lm_destroy_tree(root->nleft);
 		lm_destroy_tree(root->nright);
 		ft_strdel(&root->name);
-		lm_remove_queue(&root->links);
+		lm_qdel(&root->links);
 		free(root);
 		root = NULL;
 	}

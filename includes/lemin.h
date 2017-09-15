@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 19:59:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:47:22 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 18:46:53 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,19 @@
 # define USAGE "lem-in: usage: ./lem-in [-rc] < path_to_file"
 
 # define ERR1 "start/end command before ant count"
-# define ERR2 "first instruction must be ant count > 0 (integer)"
+# define ERR2 "first instruction must valid digit string > 0 (integer)"
 # define ERR3 "start/end command precedes link instruction"
 # define ERR4 "poor link instruction formatting"
 # define ERR5 "empty file"
-# define ERR6 "self link or link room name does not exist"
-# define ERR7 "invalid room name"////////// multiple error possibilities
+# define ERR6 "link room name does not exist"
+# define ERR7 "illegal room name"
 # define ERR8 "poor room instruction formatting"
 # define ERR9 "no possible paths"
+# define ERR10 "link to self"
+# define ERR11 "coordinate integer overflow"
+# define ERR12 "improper start or end room formatting"
+# define ERR13 "no links"
+# define ERR14 "no start or end room"
 
 # define KMDB(x) ft_printf("%s\n", x)
 

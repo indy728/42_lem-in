@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 21:12:46 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:20:36 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 18:36:28 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ void	lm_print_paths(t_lem *lem)
 
 void	lm_printerr(t_lem *lem, t_farm *head)
 {
-	//if (!lem->errstr)
-	//	errstr = ft_strdup(YELLOW"No paths found"RESET);
 	if (!lem->raw && head)
 	{
 		VAR(t_farm*, print, head);
@@ -52,7 +50,10 @@ void	lm_printerr(t_lem *lem, t_farm *head)
 		}
 		if (print->next)
 			print = print->next;
-		ft_printf(RED"%s"YELLOW"$ <- invalid: %s\n"RESET, print->inst, lem->errstr);
+		if (lem->marker < 3)
+			ft_printf(RED"%s"YELLOW"$ <- invalid: %s\n"RESET, print->inst, lem->errstr);
+		else
+			ft_printf("%s\n"YELLOW"%s\n"RESET, print->inst, lem->errstr);
 	}
 	ft_printf("ERROR\n");
 }

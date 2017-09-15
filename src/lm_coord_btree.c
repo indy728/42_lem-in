@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:54:02 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:29:44 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 17:10:24 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,17 +70,5 @@ void			lm_coord_insert(t_lem *lem, t_room **head, t_room *new)
 			lm_coord_insert(lem, &(*head)->cleft, new);
 		else
 			lm_coord_insert(lem, &(*head)->cright, new);
-	}
-}
-
-void			lm_destroy_tree(t_room *root)
-{
-	if (root)
-	{
-		lm_destroy_tree(root->cleft);
-		lm_destroy_tree(root->cright);
-		ft_strdel(&root->name);
-		free(root);
-		root = NULL;
 	}
 }
