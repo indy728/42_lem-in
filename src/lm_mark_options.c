@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 22:49:23 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/13 23:10:15 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:21:13 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,14 @@ void			lm_mark_options(int ac, char **av, t_lem *lem)
 	while (++i < ac)
 	{
 		str = av[i];
-		if (str && str[0] == '-' )
+		err = (str && str[0] == '-') ? 0 : 1;
+		j = 0;
+		while (!err && str[++j])
 		{
-			j = 0;
-			while (!err && str[++j])
-			{
-				err = (str[j] == 'r' || str[j] == 'c') ? 0 : 1;
-				lem->raw = str[j] == 'r' ? 1 : lem->raw;
-				lem->no_coords = str[j] == 'r' ? 1 : lem->no_coords;
-			}
+			err = (str[j] == 'r' || str[j] == 'c') ? 0 : 1;
+			lem->raw = str[j] == 'r' ? 1 : lem->raw;
+			lem->no_coords = str[j] == 'r' ? 1 : lem->no_coords;
 		}
-		else
-			++err;
 		if (err)
 		{
 			ft_putendl(USAGE);

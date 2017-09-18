@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 19:55:40 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 14:44:56 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:53:50 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,5 @@
 
 int	main(void)
 {
-	char i[12] = "2147483647";
-	char j[13] = "2147483648";
-	ft_printf("atoi i: %d atol i: %ld\n"
-			"atoi j: %d atol j: %ld\n", ft_atoi(i), ft_atol(i),
-			ft_atoi(j), ft_atol(j));
 	return (0);
 }

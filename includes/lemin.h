@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 19:59:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 18:46:53 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 21:08:31 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define ERR14 "no start or end room"
 
 # define KMDB(x) ft_printf("%s\n", x)
+
 
 typedef struct		s_room
 {
@@ -72,6 +73,7 @@ typedef struct		s_head
 {
 	t_queue			*path_head;
 	int				length;
+	struct s_head	*next;
 }					t_head;
 
 typedef struct		s_lem
@@ -82,7 +84,7 @@ typedef struct		s_lem
 	t_bool			start_next;
 	t_bool			end_next;
 	int				marker;
-	t_list			*path_list;
+	t_head			*path_list;
 	int				path_count;
 	int				min_length;
 	int				turn_count;
@@ -98,7 +100,7 @@ typedef struct		s_lem
 void				lm_mark_options(int ac, char **av, t_lem *lem);
 char				lm_bfs(t_lem *lem);
 void				lm_delete(t_lem *lem);
-void				lm_remove_queue(t_queue **head);
+void				lm_headcat(t_head **head, t_head *new);
 
 /*
 **	Adding rooms to farm and links to rooms (lm_add_attr.c).

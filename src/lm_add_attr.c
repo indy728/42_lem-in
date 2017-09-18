@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 22:28:03 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 17:00:34 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:14:29 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void			add_room(t_lem *lem, char **room)
 	new->cleft = NULL;
 	new->cright = NULL;
 	lm_name_insert(lem, &lem->name_head, new);
-	lm_coord_insert(lem, &lem->coord_head, new);
+	if (!lem->no_coords)
+		lm_coord_insert(lem, &lem->coord_head, new);
 	if (lem->start_next)
 	{
 		lem->start = new;

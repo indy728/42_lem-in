@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 01:02:05 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 17:50:54 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 21:13:58 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,20 +67,18 @@ void	lm_onestep(t_lem *lem)
 int		list_init(t_lem *lem, t_ant **leader)
 {
 	VAR(int, i, 0);
-	VAR(t_list*, path, lem->path_list);
-	VAR(t_head*, head, (t_head *)(path->content));
+	VAR(t_head*, path, lem->path_list);
 	VAR(int, len, lem->min_length);
-	*leader = lm_antnew(lem, ++i, head->path_head);
+	*leader = lm_antnew(lem, ++i, path->path_head);
 	VAR(t_ant*, tmp, *leader);
 	while (path && i < lem->ants && i < lem->path_count)
 	{
 		path = path->next;
-		head = (t_head *)path->content;
-		if ((lem->ants - i) / i < (head->length - len))
+		if ((lem->ants - i) / i < (path->length - len))
 			break ;
-		tmp->next = lm_antnew(lem, ++i, head->path_head);
+		tmp->next = lm_antnew(lem, ++i, path->path_head);
 		tmp = tmp->next;
-		len = head->length;
+		len = path->length;
 	}
 	return (i);
 }

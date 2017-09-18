@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 21:31:23 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 17:54:18 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 21:09:42 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 void		lm_remove_path_list(t_lem *lem)
 {
-	VAR(t_list*, del, lem->path_list);
-	VAR(t_list*, tmp, NULL);
+	VAR(t_head*, del, lem->path_list);
+	VAR(t_head*, tmp, NULL);
 	VAR(t_head*, head, NULL);
 	while (del)
 	{
 		tmp = del;
-		head = (t_head *)del->content;
-		lm_qdel(&head->path_head);
-		free(head);
+		lm_qdel(&del->path_head);
 		del = tmp->next;
 		free(tmp);
 	}
@@ -36,4 +34,17 @@ void		lm_delete(t_lem *lem)
 	ft_strdel(&lem->errstr);
 	lm_destroy_tree(lem->name_head);
 	free(lem);
+}
+
+void	lm_headcat(t_head **head, t_head *new)
+{
+	if (*head)
+	{
+		VAR(t_head*, scout, *head);
+		while(scout->next)
+			scout = scout->next;
+		scout->next = new;
+	}
+	else
+		*head = new;
 }

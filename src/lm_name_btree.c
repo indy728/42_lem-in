@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:54:02 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 17:09:30 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:16:28 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,14 @@ void			lm_name_insert(t_lem *lem, t_room **head, t_room *new)
 		VAR(int, value, 0);
 		if (!(value = ft_strcmp((*head)->name, new->name)))
 		{
-	//		lm_coord_pop(lem->coord_head, new);
-			lm_coord_pop(lem->coord_head, *head);
+			if (!lem->no_coords)
+				lm_coord_pop(lem->coord_head, *head);
 			(*head)->x = new->x;
 			(*head)->y = new->y;
 			(*head)->cleft = NULL;
 			(*head)->cright = NULL;
-			lm_coord_insert(lem, &lem->coord_head, *head);
+			if (!lem->no_coords)
+				lm_coord_insert(lem, &lem->coord_head, *head);
 		}
 		else if (value > 0)
 			lm_name_insert(lem, &(*head)->nleft, new);

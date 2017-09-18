@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 19:55:53 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 17:42:21 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 21:09:53 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_head		*lm_pathfinder(t_lem *lem)
 void		lm_addpath(t_lem *lem)
 {
 	++lem->path_count;
-	ft_lstcat(&lem->path_list, ft_lstnew(lm_pathfinder(lem), sizeof(t_head)));
+	lm_headcat(&lem->path_list, lm_pathfinder(lem));
 }
 
 /*

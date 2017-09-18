@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/10 17:18:49 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 19:01:06 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/14 20:51:53 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void		validate_links(t_lem *lem, char *line, int *err)
 static int		lm_get_links(t_lem *lem, char *line)
 {
 	VAR(int, err, 0);
+	VAR(int, gnl, 1);
 	++lem->marker;
 	if (lem->start_next || lem->end_next)
 		err += lm_err_str(lem, ERR12);
@@ -76,9 +77,10 @@ static int		lm_get_links(t_lem *lem, char *line)
 		err += lm_err_str(lem, ERR14);
 	if (!err)
 		validate_links(lem, line, &err);
-	while (!err && get_next_line(0, &line) > 0)
+	while (!err && (gnl = get_next_line(0, &line)) > 0)
 		validate_links(lem, line, &err);
-//	ft_strdel(&line);
+	if (gnl <= 0)
+		ft_strdel(&line);
 	return (err);
 }
 
@@ -130,7 +132,7 @@ int				lm_get_rooms(t_lem *lem)
 		if (lem->marker == 1)
 			ft_strdel(&line);
 	}
-//	if (!err)
-//		err += lem->marker == 2 ? 0 : lm_err_str(lem, ERR13);
+	if (!err)
+		err += lem->marker == 2 ? 0 : lm_err_str(lem, ERR13);
 	return (err);
 }
