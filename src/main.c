@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 20:09:15 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/18 17:00:22 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/18 18:28:16 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ int		main(int ac, char **av)
 	VAR(char*, line, NULL);
 	VAR(char*, error, NULL);
 	VAR(t_lem*, lem, (t_lem *)ft_memalloc(sizeof(t_lem)));
+	if (!lem)
+	{
+		ft_printf("memory allocation failed: size of: struct s_lem\n");
+		exit(0);
+	}
 	if (ac > 1)
 		lm_mark_options(ac, av, lem);
 	if (validate_instructions(lem))
