@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 20:54:02 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 20:16:28 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/18 21:45:42 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void			lm_name_insert(t_lem *lem, t_room **head, t_room *new)
 			(*head)->cright = NULL;
 			if (!lem->no_coords)
 				lm_coord_insert(lem, &lem->coord_head, *head);
+			set_start_end(lem, *head);
+			lem->dupe = 1;
 		}
 		else if (value > 0)
 			lm_name_insert(lem, &(*head)->nleft, new);

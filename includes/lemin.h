@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 19:59:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/18 17:01:15 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/18 21:44:03 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct		s_lem
 	int				path_count;
 	int				min_length;
 	int				turn_count;
+	t_bool			dupe;
 	t_bool			raw;
 	t_bool			no_coords;
 	t_bool			one_path;
@@ -108,6 +109,7 @@ void				lm_headcat(t_head **head, t_head *new);
 
 void				add_room(t_lem *lem, char **room);
 int					add_link(t_lem *lem, char **link);
+void				set_start_end(t_lem *lem, t_room *new);
 void				lm_name_insert(t_lem *lem, t_room **head, t_room *new);
 void				lm_coord_insert(t_lem *lem, t_room **head, t_room *new);
 void				lm_destroy_tree(t_room *root);

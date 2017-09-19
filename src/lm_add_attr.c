@@ -6,11 +6,32 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/22 22:28:03 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 20:14:29 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/18 21:51:19 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
+
+void			set_start_end(t_lem *lem, t_room *new)
+{
+	if (lem->start_next)
+	{
+		lem->start = new;
+		lem->start_next = 0;
+	}
+	else if (lem->end_next)
+	{
+		lem->end = new;
+		lem->end_next = 0;
+	}
+}
+
+static void		dupe_room(t_lem *lem, t_room *new)
+{
+	lem->dupe = 0;
+	ft_strdel(&new->name);
+	free(new);
+}
 
 void			add_room(t_lem *lem, char **room)
 {
@@ -25,19 +46,12 @@ void			add_room(t_lem *lem, char **room)
 	new->nright = NULL;
 	new->cleft = NULL;
 	new->cright = NULL;
+	set_start_end(lem, new);
 	lm_name_insert(lem, &lem->name_head, new);
 	if (!lem->no_coords)
 		lm_coord_insert(lem, &lem->coord_head, new);
-	if (lem->start_next)
-	{
-		lem->start = new;
-		lem->start_next = 0;
-	}
-	else if (lem->end_next)
-	{
-		lem->end = new;
-		lem->end_next = 0;
-	}
+	if (lem->dupe)
+		dupe_room(lem, new);
 }
 
 static t_room	*find_node(t_room *head, char *name)
