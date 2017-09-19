@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/09/13 21:31:23 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 21:09:42 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/18 15:57:34 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void		lm_delete(t_lem *lem)
 	free(lem);
 }
 
-void	lm_headcat(t_head **head, t_head *new)
+void		lm_headcat(t_head **head, t_head *new)
 {
 	if (*head)
 	{
 		VAR(t_head*, scout, *head);
-		while(scout->next)
+		while (scout->next)
 			scout = scout->next;
 		scout->next = new;
 	}

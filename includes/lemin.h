@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 19:59:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 21:08:31 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/18 17:01:15 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "libft.h"
 
-# define USAGE "lem-in: usage: ./lem-in [-rc] < path_to_file"
+# define USAGE "lem-in: usage: ./lem-in [-1rc] < path_to_file"
 
 # define ERR1 "start/end command before ant count"
 # define ERR2 "first instruction must valid digit string > 0 (integer)"
@@ -33,7 +33,6 @@
 # define ERR14 "no start or end room"
 
 # define KMDB(x) ft_printf("%s\n", x)
-
 
 typedef struct		s_room
 {
@@ -90,6 +89,7 @@ typedef struct		s_lem
 	int				turn_count;
 	t_bool			raw;
 	t_bool			no_coords;
+	t_bool			one_path;
 	t_room			*start;
 	t_room			*end;
 	t_farm			*farm_head;

@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 20:09:15 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 21:15:48 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/18 17:00:22 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	set_max_paths(t_lem *lem)
 	VAR(int, start, 1);
 	VAR(int, end, 1);
 	VAR(t_queue*, tmp, lem->start->links);
+	if (lem->one_path)
+	{
+		lem->max_paths = 1;
+		return ;
+	}
 	while ((tmp = tmp->next))
 		++start;
 	tmp = lem->end->links;

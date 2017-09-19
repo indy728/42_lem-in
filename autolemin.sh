@@ -7,7 +7,9 @@ header()
 	echo "\x1B[34m  / /\ \| |  | |  | | | |  | | |    |  __| | |\/| | | | | . \` |";
 	echo "\x1B[35m / ____ \ |__| |  | | | |__| | |____| |____| |  | |_| |_| |\  |";
 	echo "\x1B[36m/_/    \_\____/   |_|  \____/|______|______|_|  |_|_____|_| \_|\x1B[0m";
-
+}
+author()
+{
 	echo "\x1B[31m         ___      \x1B[32m  _  __  ___   _   _   __ ___  ___   ___";
 	echo "\x1B[31m        / o.)_ __ \x1B[32m / |/ /,' _/ .' \ / \,' // o |/ o | / _/";
 	echo "\x1B[31m       / o \ \V / \x1B[32m/ || /_\ \`. / o // \,' // _,'/  ,' / _/";
@@ -39,7 +41,10 @@ done;
 
 clear;
 header;
-printf "\x1B[32mSelect farms: [s]mall | [m]edium | [l]arge | [e]rror: \x1B[0m";
+author;
+printf "\x1B[36mVersion 1.2 By kmurray - 13.9.2017\x1B[0m";
+echo; echo;
+printf "\x1B[32mSelect farms: [s]mall | [m]edium | [l]arge | [e]rror | [o]ptimization: \x1B[0m";
 read response;
 
 if [ $response = "s" ]
@@ -50,6 +55,8 @@ elif [ $response = "l" ]
 	then	maps ./maps/large
 elif [ $response = "e" ]
 	then	maps ./maps/error
+elif [ $response = "o" ]
+	then	maps ./maps/optimize_route
 else
 	exit
 fi
