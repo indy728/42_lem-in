@@ -33,7 +33,7 @@ $(NAME): $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
-	@$(CC) $(INC) $(INC_LFT) -o $@ -c $< 
+	@$(CC) $(CFLAGS) $(INC) $(INC_LFT) -o $@ -c $< 
 	@printf "\033[1m\x1b[33m********\x1b[0m"
 
 test: $(OBJ)

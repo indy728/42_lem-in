@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 20:09:15 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/18 20:35:25 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/20 14:33:07 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	set_max_paths(t_lem *lem)
 
 int		main(int ac, char **av)
 {
-	VAR(char*, line, NULL);
-	VAR(char*, error, NULL);
 	VAR(t_lem*, lem, (t_lem *)ft_memalloc(sizeof(t_lem)));
 	if (!lem)
 	{
@@ -73,6 +71,5 @@ int		main(int ac, char **av)
 			lm_printerr(lem, lem->farm_head);
 	}
 	lm_delete(lem);
-	sleep(2);
 	return (0);
 }

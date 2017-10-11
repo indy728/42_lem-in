@@ -6,13 +6,13 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/29 01:02:05 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 21:13:58 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/20 14:58:15 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lemin.h"
 
-int		lm_ant_advance(t_lem *lem, t_ant **leader)
+int		lm_ant_advance(t_ant **leader)
 {
 	VAR(t_ant*, line, *leader);
 	VAR(t_ant*, del, NULL);
@@ -48,7 +48,7 @@ void	lm_onestep(t_lem *lem)
 	VAR(int, i, 0);
 	VAR(char*, name, NULL);
 	VAR(char*, tmp, NULL);
-	while (++i < lem->ants)
+	while (++i < (int)lem->ants)
 	{
 		tmp = ft_itoa(i);
 		name = ft_strjoin("L", tmp);
@@ -69,14 +69,14 @@ int		list_init(t_lem *lem, t_ant **leader)
 	VAR(int, i, 0);
 	VAR(t_head*, path, lem->path_list);
 	VAR(int, len, lem->min_length);
-	*leader = lm_antnew(lem, ++i, path->path_head);
+	*leader = lm_antnew(++i, path->path_head);
 	VAR(t_ant*, tmp, *leader);
-	while (path && i < lem->ants && i < lem->path_count)
+	while (path && i < (int)lem->ants && i < lem->path_count)
 	{
 		path = path->next;
-		if ((lem->ants - i) / i < (path->length - len))
+		if (((int)lem->ants - i) / i < (path->length - len))
 			break ;
-		tmp->next = lm_antnew(lem, ++i, path->path_head);
+		tmp->next = lm_antnew(++i, path->path_head);
 		tmp = tmp->next;
 		len = path->length;
 	}
@@ -85,7 +85,7 @@ int		list_init(t_lem *lem, t_ant **leader)
 
 void	lm_march(t_lem *lem)
 {
-	VAR(int, ants, 0);
+	VAR(unsigned int, ants, 0);
 	VAR(int, done, 0);
 	lm_print_paths(lem);
 	if (lem->min_length == 1)
@@ -94,10 +94,10 @@ void	lm_march(t_lem *lem)
 	{
 		VAR(t_ant*, leader, NULL);
 		ants = list_init(lem, &leader);
-		while (done < lem->ants)
+		while (done < (int)lem->ants)
 		{
 			lm_antprint(lem, leader);
-			done += lm_ant_advance(lem, &leader);
+			done += lm_ant_advance(&leader);
 			if (ants < lem->ants)
 				ants = lm_antcat(lem, leader, ants);
 		}

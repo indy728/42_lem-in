@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/16 19:59:36 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/18 21:44:03 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/20 14:54:52 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,8 +143,8 @@ int					lm_err_str(t_lem *lem, char *str);
 **	Make ants, add ants, move ants kill ants (lm_march.c, lm_ants.c).
 */
 
-t_ant				*lm_antnew(t_lem *lem, int i, t_queue *path);
-int					lm_antcat(t_lem *lem, t_ant *leader, int ants);
+t_ant				*lm_antnew(int i, t_queue *path);
+unsigned int		lm_antcat(t_lem *lem, t_ant *leader, unsigned int ants);
 void				lm_antdel(t_ant **leader, t_ant *del);
 void				lm_march(t_lem *lem);
 

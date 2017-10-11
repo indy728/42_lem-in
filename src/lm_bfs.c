@@ -6,7 +6,7 @@
 /*   By: kmurray <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/08/23 19:55:53 by kmurray           #+#    #+#             */
-/*   Updated: 2017/09/14 21:09:53 by kmurray          ###   ########.fr       */
+/*   Updated: 2017/09/20 14:50:57 by kmurray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char		lm_bfs(t_lem *lem)
 	VAR(t_queue*, head, lm_qnew(lem->start));
 	VAR(t_room*, cwn, NULL);
 	VAR(int, len, 1);
-	while (head && lem->path_count < lem->max_paths && lem->min_length != 1)
+	while (head && lem->path_count < (int)lem->max_paths && lem->min_length != 1)
 	{
 		cwn = head->room;
 		lm_links_loop(lem, cwn, &head, &len);
