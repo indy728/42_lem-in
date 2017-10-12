@@ -1,0 +1,54 @@
+# 42-lem-in
+## Pathfinding Algo in C
+
+#### Usage: ./lem-in [-1rc] < path-to-file
+
+The purpose of this project is to 
+
+## The Project
+
+ 
+#### Autolemin Usage: sh autolemin.sh
+
+![read-in](/screenshots/autolemin)
+for contrast, this is the game output to the user:
+
+![vm_output](/screenshots/filler_vm_output.png?raw=true "vm_output")
+
+A piece may look something like this:
+
+![](/screenshots/simple_piece.png)
+
+The asterisks represent the body of the piece. Placement rules only apply to the asterisked grid units. The empty (".") spaces are ignored. However, the coordinates of the placement correspont to the top left corner of the piece, whethe it is a filled space or an empty space. Negative integers are valid placement coordinates so long as is still allows all filled spaces on the piece to be placed according to the game rules. Here's another example of a bigger piece with lots of empty space:
+
+![](/screenshots/large_piece1.png)
+![](/screenshots/large_piece2.png)
+![](/screenshots/large_piece3.png)
+
+The bulk of the project is reading the VM input and writing an algorithm to place a piece according to the rules. The basic strategy is to interpret the map into a 2D char array and iterate from negative coordinates all the way until the end of the array or until the the program finds a valid spot to place the piece. Once this basic algortithm has been written, implementing an "attack" strategy becomes an easy fine tuning and tinkering project.
+
+My attack strategy dynamically changes depending on where my starting position is, which walls I've already touched (and therefore halted the opponent in that direction, and the relative position of the opponent's sprawl to my own. I created macros to be able to give more weight to certain strategy (ie do I want to sprint at the opposite wall or do I favor choking out my opponent, how much breathing room do I give my opponent, etc). Once the strategies were weighted in such a manner that I always win on large and medium maps and lose less than 40% of the time on small maps in a disadvantaged starting position, I considered the project complete.
+
+## Project Bonuses
+
+In addition to the efficacy of my attack algorithms, I also included a graphic visualizer for the game. At each turn, it outputs the current game board, with white spaces representing my own sprawl, black spaces representing my opponent, and a green, yellow and red heat map to indicate the attack value of different parts of the game board. 
+
+![](/screenshots/heat_map0.png)
+![](/screenshots/heat_map1.png)
+
+This heat map is the best indication of the dynamic switching my program does on certain cues to prioritize different attack strategies.
+
+![](/screenshots/heat_map2.png)
+![](/screenshots/heat_map3.png)
+![](/screenshots/heat_map4.png)
+![](/screenshots/heat_map5.png)
+![](/screenshots/heat_map6.png)
+![](/screenshots/heat_map7.png)
+![](/screenshots/heat_map8.png)
+![](/screenshots/heat_map9.png)
+
+## Project Improvements
+
+The attack algorithms can always be improved. An optimal strategy, which I feel was unnecessary to fully complete the project, would include an algorithm that responds to the deviation of the opponent's sprawl to effectively figure out which direction the opponent is trying to head.
+
+An obvious improvement would be to add a Makefile command that would allow me to compile with or without my heat map. It would be relatively simple—the only challenge would be norme compliance. As it is, I have to go into my code and manually add a line to print out the heat map array, which feels ugly.
