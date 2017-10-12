@@ -22,7 +22,7 @@ B) Pathfinding algorithm. It is up to you to decide how to implement an effectiv
 
 To test multiple farms consecutively without returning to the command line, I've included <a href="https://github.com/nsampre">nsampre</a>'s bash script, modified to more effectively add maps and test all maps based on repo theme:
 
-![autolemin](/screenshots/autolemin)
+![](/screenshots/autolemin.png)
 
 ![vm_output](/screenshots/filler_vm_output.png?raw=true "vm_output")
 
