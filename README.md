@@ -54,7 +54,7 @@ Providing the user with flags for how to run the program was not required but I 
 ![](/screenshots/maps/mmkr_multipath_paths.png)
 ![](/screenshots/maps/mmkr_multipath_turns.png)
 
-###vs
+#### vs
 
 ![](/screenshots/maps/mmkr_singlepath.png)
 ![](/screenshots/maps/mmkr_singlepath_path.png)
@@ -62,7 +62,7 @@ Providing the user with flags for how to run the program was not required but I 
 
 The Ignore Coordinates option is there for farm creators who may have mistakenly created rooms occupying the same space. The program will still be able to interpret the program as intended.
 
-####Speed Bonus
+### Speed Bonus
 
 In testing my Lem-in project against those others I could find on line, mine is effectively 2 to 150x faster for solving a single path amongst 10,000 rooms across which to march 1,000 ants. I attribute this to the use of binary search trees to validate input and verify no duplicate rooms.
 
@@ -70,18 +70,23 @@ My (kmurray's) Lem-in:
 ![](/screenshots/time/time_lemin_kmurray.png) 
 
 Other Users:
-***
+
 ![](/screenshots/time/time_lemin_kdavis.png)
 ![](/screenshots/time/time_lemin_raphael.png)
 ![](/screenshots/time/time_lemin_barong.png)
 ![](/screenshots/time/time_lemin_nsampre.png)
+
+Or a path for such a large farm is just not found:
+
 ![](/screenshots/time/time_lemin_wouterbeets.png)
 ![](/screenshots/time/time_lemin_rschramm.png)
 
-*** It should be noted that the comparison for User1's lem-in is not strictly valid, considering it uses Dijkstra's algorithm and therefore the number of rooms searched and traversed may be different. It also has a more verbose output than my own.
+*** It should be noted that the comparison for User0's lem-in is not strictly valid, considering it uses Dijkstra's algorithm and therefore the number of rooms searched and traversed may be different. It also has a more verbose output than my own.
+
+## Project Gripes
+
+Although this project is sold as finding an efficient way to get all units from point A to point B, the correction sheet largely ignores the prospect of finding multiple paths or calculated the speed efficiency of the program. This is a level 2 project that can be completed according to the pdf in a minimal amount of time. The whole challenge is in making it effective.
 
 ## Project Improvements
 
-The attack algorithms can always be improved. An optimal strategy, which I feel was unnecessary to fully complete the project, would include an algorithm that responds to the deviation of the opponent's sprawl to effectively figure out which direction the opponent is trying to head.
-
-An obvious improvement would be to add a Makefile command that would allow me to compile with or without my heat map. It would be relatively simple—the only challenge would be norme compliance. As it is, I have to go into my code and manually add a line to print out the heat map array, which feels ugly.
+I always intended to include a "-d" flag to implement a Dijkstra's algorithm solution as an option. I did find, however, that after digging out <b>ALL</b> bugs and memory leaks, that I was ready to focus on another project.
