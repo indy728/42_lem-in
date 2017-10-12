@@ -2,6 +2,9 @@
 ## Pathfinding Algo in C
 
 #### Usage: ./lem-in [-1rc] < path-to-file
+    - 1: One Path: Marches all ants down the first and shortest path.
+    - r: Raw: Simple output as per requirements of the assignment.
+    - c: Ignore Coordinates: In this program's vaildation process, duplicate coordinates naturally reset the name of the  original room of same coordinates. Ignore Coordinates will create new rooms regardless of coordinates.
 
 The purpose of this project is to write a program that validates input and effectively implements a pathfinding algorithm to solve a problem efficiently.
 
