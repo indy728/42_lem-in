@@ -26,25 +26,25 @@ To test multiple farms consecutively without returning to the command line, I've
 
 An example of a simple map solved:
 
-![](/screenshots/maps_cobmap.png)
-![](/screenshots/maps_cobmap_result.png)
+![](/screenshots/maps/maps_cobmap.png)
+![](/screenshots/maps/maps_cobmap_result.png)
 
 If the path is only one link, then all ants may proceed in the same turn:
 
-![](/screenshots/maps_onestep.png)
+![](/screenshots/maps/maps_onestep.png)
 
 If multiple paths are found, ants will walk separate paths until it is inefficient to do so:
 
-![](/screenshots/maps_diamond.png)
+![](/screenshots/maps/maps_diamond.png)
 
 If errors are encountered in parsing and validation, the program returns an error:
 
-![](/screenshots/maps_error_illegal.png)
-![](/screenshots/maps_error_overflow.png)
+![](/screenshots/maps/maps_error_illegal.png)
+![](/screenshots/maps/maps_error_overflow.png)
 
 Same thing if there is no path from the start room to the end room:
 
-![](/screenshots/maps_error_noroute.png)
+![](/screenshots/maps/maps_error_noroute.png)
 
 ## Project Bonuses
 
