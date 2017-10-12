@@ -48,21 +48,17 @@ Same thing if there is no path from the start room to the end room:
 
 ## Project Bonuses
 
-In addition to the efficacy of my attack algorithms, I also included a graphic visualizer for the game. At each turn, it outputs the current game board, with white spaces representing my own sprawl, black spaces representing my opponent, and a green, yellow and red heat map to indicate the attack value of different parts of the game board. 
+Providing the user with flags for how to run the program was not required but I found it prudent to illustrate the efficacy of the program. Technically the raw output was a requirement, and thusly my standard output that includes error notification, includes path count, path illucidation, and turn count would be a cherry. The One Path option is there to illustrate the difference in efficiency between multiple paths and one path:
 
-![](/screenshots/heat_map0.png)
-![](/screenshots/heat_map1.png)
+![](/screenshots/maps/maps_multipath.png)
+![](/screenshots/maps/maps_multipath_paths.png)
+![](/screenshots/maps/maps_multipath_turns.png)
 
-This heat map is the best indication of the dynamic switching my program does on certain cues to prioritize different attack strategies.
+###vs
 
-![](/screenshots/heat_map2.png)
-![](/screenshots/heat_map3.png)
-![](/screenshots/heat_map4.png)
-![](/screenshots/heat_map5.png)
-![](/screenshots/heat_map6.png)
-![](/screenshots/heat_map7.png)
-![](/screenshots/heat_map8.png)
-![](/screenshots/heat_map9.png)
+![](/screenshots/maps/maps_singlepath.png)
+![](/screenshots/maps/maps_singlepath_paths.png)
+![](/screenshots/maps/maps_singlepath_turns.png)
 
 ## Project Improvements
 
