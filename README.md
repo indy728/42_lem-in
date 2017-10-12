@@ -3,7 +3,9 @@
 
 #### Usage: ./lem-in [-1rc] < path-to-file
 
-The purpose of this project is to 
+The purpose of this project is to write a program that validates input and effectively implements a pathfinding algorithm to solve a problem efficiently.
+
+The premise of Lem-in is that you are working with an ant farm and a given number of ants. The farm is comprised of rooms and tunnels (links), with one room designated as start and another uniquely designated as finish. You are to "march" all of the ants from the starting room to the ending room. All the ants are present in the starting room and until they reach the end room, no two ants can be in the same room on the same turn.
 
 ## The Project
 
