@@ -24,21 +24,27 @@ To test multiple farms consecutively without returning to the command line, I've
 
 ![](/screenshots/autolemin.png)
 
-![vm_output](/screenshots/filler_vm_output.png?raw=true "vm_output")
+An example of a simple map solved:
 
-A piece may look something like this:
+![](/screenshots/maps_cobmap.png)
+![](/screenshots/maps_cobmap_result.png)
 
-![](/screenshots/simple_piece.png)
+If the path is only one link, then all ants may proceed in the same turn:
 
-The asterisks represent the body of the piece. Placement rules only apply to the asterisked grid units. The empty (".") spaces are ignored. However, the coordinates of the placement correspont to the top left corner of the piece, whethe it is a filled space or an empty space. Negative integers are valid placement coordinates so long as is still allows all filled spaces on the piece to be placed according to the game rules. Here's another example of a bigger piece with lots of empty space:
+![](/screenshots/maps_onestep.png)
 
-![](/screenshots/large_piece1.png)
-![](/screenshots/large_piece2.png)
-![](/screenshots/large_piece3.png)
+If multiple paths are found, ants will walk separate paths until it is inefficient to do so:
 
-The bulk of the project is reading the VM input and writing an algorithm to place a piece according to the rules. The basic strategy is to interpret the map into a 2D char array and iterate from negative coordinates all the way until the end of the array or until the the program finds a valid spot to place the piece. Once this basic algortithm has been written, implementing an "attack" strategy becomes an easy fine tuning and tinkering project.
+![](/screenshots/maps_diamond.png)
 
-My attack strategy dynamically changes depending on where my starting position is, which walls I've already touched (and therefore halted the opponent in that direction, and the relative position of the opponent's sprawl to my own. I created macros to be able to give more weight to certain strategy (ie do I want to sprint at the opposite wall or do I favor choking out my opponent, how much breathing room do I give my opponent, etc). Once the strategies were weighted in such a manner that I always win on large and medium maps and lose less than 40% of the time on small maps in a disadvantaged starting position, I considered the project complete.
+If errors are encountered in parsing and validation, the program returns an error:
+
+![](/screenshots/maps_error_illegal.png)
+![](/screenshots/maps_error_overflow.png)
+
+Same thing if there is no path from the start room to the end room:
+
+![](/screenshots/maps_error_noroute.png)
 
 ## Project Bonuses
 
