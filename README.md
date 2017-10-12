@@ -67,11 +67,11 @@ The Ignore Coordinates option is there for farm creators who may have mistakenly
 In testing my Lem-in project against those others I could find on line, mine is effectively 2 to 150x faster for solving a single path amongst 10,000 rooms across which to march 1,000 ants. I attribute this to the use of binary search trees to validate input and verify no duplicate rooms.
 
 My (kmurray's) Lem-in:
-![](/screenshots/time/time_kmurray.png)
+![](/screenshots/time/time_lemin_kmurray.png) 
 
 Other Users:
-![](/screenshots/time/time_lemin_kmurray.png)
-![](/screenshots/time/time_lemin_kdavis.png) ***
+***
+![](/screenshots/time/time_lemin_kdavis.png)
 ![](/screenshots/time/time_lemin_raphael.png)
 ![](/screenshots/time/time_lemin_barong.png)
 ![](/screenshots/time/time_lemin_nsampre.png)
