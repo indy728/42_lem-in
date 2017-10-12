@@ -1,4 +1,4 @@
-# 42-lem-in
+# 42_lem-in
 ## Pathfinding Algo in C
 
 #### Usage: ./lem-in [-1rc] < path-to-file
@@ -12,11 +12,17 @@ The premise of Lem-in is that you are working with an ant farm and a given numbe
 
 ## The Project
 
+This project can be dissected into distinct parts:
+
+A) Parsing. You are given guidelines for the formatting of the ant farm as read in via STDIN. It is up to you to interpret the guidelines and effectively validate inputs in accordance with your interpretations. The largest albeit least interesting part of this project is parsing and validating input. While this is occurring, the farm information is being stored in an appropriate object and (hopefully) data structure.
+
+B) Pathfinding algorithm. It is up to you to decide how to implement an effective pathfinding algorithm and which. For the literal "shortest-path", using Dijkstra's algorithm to determine distance between coordinates seems prudent. My argument, however, is that logically to have the shortest distance traveled by ants, they would all take the same first path discovered. I instead opted for implementing a Breadth-First Search, and continuing to look for paths until out of unique paths. In this way, my ants effect a "fewest turns" march. To be sure they did not march down very long paths that would have proven inefficient, I wrote a start-decision algorithm to ensure efficacy.
  
 #### Autolemin Usage: sh autolemin.sh
 
-![read-in](/screenshots/autolemin)
-for contrast, this is the game output to the user:
+To test multiple farms consecutively without returning to the command line, I've included <a href="https://github.com/nsampre">nsampre</a>'s bash script, modified to more effectively add maps and test all maps based on repo theme:
+
+![autolemin](/screenshots/autolemin)
 
 ![vm_output](/screenshots/filler_vm_output.png?raw=true "vm_output")
 
