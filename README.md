@@ -50,15 +50,15 @@ Same thing if there is no path from the start room to the end room:
 
 Providing the user with flags for how to run the program was not required but I found it prudent to illustrate the efficacy of the program. Technically the raw output was a requirement, and thusly my standard output that includes error notification, includes path count, path illucidation, and turn count would be a cherry. The One Path option is there to illustrate the difference in efficiency between multiple paths and one path:
 
-![](/screenshots/maps/maps_multipath.png)
-![](/screenshots/maps/maps_multipath_paths.png)
-![](/screenshots/maps/maps_multipath_turns.png)
+![](/screenshots/maps/mmkr_multipath.png)
+![](/screenshots/maps/mmkr_multipath_paths.png)
+![](/screenshots/maps/mmkr_multipath_turns.png)
 
 ###vs
 
-![](/screenshots/maps/maps_singlepath.png)
-![](/screenshots/maps/maps_singlepath_paths.png)
-![](/screenshots/maps/maps_singlepath_turns.png)
+![](/screenshots/maps/mmkr_singlepath.png)
+![](/screenshots/maps/mmkr_singlepath_paths.png)
+![](/screenshots/maps/mmkr_singlepath_turns.png)
 
 ## Project Improvements
 
