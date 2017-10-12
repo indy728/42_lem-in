@@ -70,13 +70,13 @@ My (kmurray's) Lem-in:
 ![](/screenshots/time/time_kmurray.png)
 
 Other Users:
-![](/screenshots/time/time_kmurray.png)
-![](/screenshots/time/time_kdavis.png) ***
-![](/screenshots/time/time_raphael.png)
-![](/screenshots/time/time_barong.png)
-![](/screenshots/time/time_nsampre.png)
-![](/screenshots/time/time_wouterbeets.png)
-![](/screenshots/time/time_rschramm.png)
+![](/screenshots/time/time_lemin_kmurray.png)
+![](/screenshots/time/time_lemin_kdavis.png) ***
+![](/screenshots/time/time_lemin_raphael.png)
+![](/screenshots/time/time_lemin_barong.png)
+![](/screenshots/time/time_lemin_nsampre.png)
+![](/screenshots/time/time_lemin_wouterbeets.png)
+![](/screenshots/time/time_lemin_rschramm.png)
 
 *** It should be noted that the comparison for User1's lem-in is not strictly valid, considering it uses Dijkstra's algorithm and therefore the number of rooms searched and traversed may be different. It also has a more verbose output than my own.
 
