@@ -1,5 +1,5 @@
 # 42_lem-in
-## Pathfinding Algo in C
+## Pathfinding Function in C
 
 #### Usage: ./lem-in [-1rc] < path-to-file
     - 1: One Path: Marches all ants down the first and shortest path.
