@@ -1,5 +1,5 @@
 # 42_lem-in
-## Pathfinding Function in C
+## Pathfinding Program in C
 
 #### Usage: ./lem-in [-1rc] < path-to-file
     - 1: One Path: Marches all ants down the first and shortest path.
@@ -64,7 +64,7 @@ The Ignore Coordinates option is there for farm creators who may have mistakenly
 
 ### Speed Bonus
 
-In testing my Lem-in project against those others I could find on line, mine is effectively 2 to 150x faster for solving a single path amongst 10,000 rooms across which to march 1,000 ants. I attribute this to the use of binary search trees to validate input and verify no duplicate rooms.
+In testing my Lem-in project against those others I could find on line, mine is effectively 2.5x to 150x faster for solving a single path amongst 10,000 rooms across which to march 1,000 ants. I attribute this to the use of binary search trees to validate input and verify no duplicate rooms.
 
 My (kmurray's) Lem-in:
 ![](/screenshots/time/time_lemin_kmurray.png) 
@@ -85,8 +85,8 @@ Or a path for such a large farm is just not found:
 
 ## Project Gripes
 
-Although this project is sold as finding an efficient way to get all units from point A to point B, the correction sheet largely ignores the prospect of finding multiple paths or calculated the speed efficiency of the program. This is a level 2 project that can be completed according to the pdf in a minimal amount of time. The whole challenge is in making it effective.
+Although this project is sold as finding an efficient way to get all units from point A to point B, the correction sheet largely ignores the prospect of finding multiple paths or calculating the speed efficiency of the program. This is a level 2 project that can be completed according to the pdf in a minimal amount of time. The whole challenge is in making it effective.
 
 ## Project Improvements
 
-I always intended to include a "-d" flag to implement a Dijkstra's algorithm solution as an option. I did find, however, that after digging out <b>ALL</b> bugs and memory leaks, that I was ready to focus on another project.
+I always intended to include a "-d" flag to implement a Dijkstra's algorithm solution as an option. I did find, however, that after digging out <b>ALL</b> bugs and memory leaks,  I was ready to focus on another project.
